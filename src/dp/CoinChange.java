@@ -1,9 +1,5 @@
 package dp;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 public class CoinChange {
     public int coinChange(int[] coins, int amount) {
         int []dp = new int [amount+1];
@@ -27,6 +23,5 @@ public class CoinChange {
         int [] coins = {186,419,83,408};
         CoinChange coinChange = new CoinChange();
         System.out.println(coinChange.coinChange(coins, 6249));
-        Set<Integer> validDigits = new HashSet(Arrays.asList(new int[]{0, 1, 8, 2, 5, 6, 9}));
     }
 }
