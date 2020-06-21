@@ -55,6 +55,5 @@ public class Permutations {
             System.out.print(",");
         }
         System.out.println("]\n"+permutations.permutationString("abc"));
-
     }
 }
