@@ -1,37 +1,30 @@
+import javafx.util.Pair;
+
 import java.util.*;
 
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        Set<Set<Integer>> seenpair = new HashSet<>();
-        for (int num : nums) {
-            int diff = -num;
-            Set<Integer> temp = getTwoSumResult(nums, diff);
-            if (!temp.isEmpty() && seenpair.add(temp)) {
-                temp.add(num);
-                result.addAll(Collections.singleton(new ArrayList<>(temp)));
-            }
-        }
-        return result;
-    }
-
-
-    private Set<Integer> getTwoSumResult(int[] nums, int target) {
-        Set<Integer> result = new HashSet<>();
-        Set<Integer> complements = new HashSet<>();
-        for (int num : nums) {
-            int diff = target - num;
-            if (complements.contains(diff)) {
-                result.add(diff);
-                result.add(num);
-                return result;
-            }
-            complements.add(num);
-        }
-        return result;
+        List<List<Integer>> res = new ArrayList<>();
+        Set<Pair> found = new HashSet<>();
+        Set<Integer> dups = new HashSet<>();
+        Map<Integer, Integer> seen = new HashMap<>();
+        for (int i = 0; i < nums.length; ++i)
+            if (dups.add(nums[i]))
+                for (int j = i + 1; j < nums.length; ++j) {
+                    int complement = -nums[i] - nums[j];
+                    if (seen.containsKey(complement) && seen.get(complement) == i) {
+                        int v1 = Math.min(nums[i], Math.min(complement, nums[j]));
+                        int v2 = Math.max(nums[i], Math.max(complement, nums[j]));
+                        if (found.add(new Pair(v1, v2)))
+                            res.add(Arrays.asList(nums[i], complement, nums[j]));
+                    }
+                    seen.put(nums[j], i);
+                }
+        return res;
     }
 
     public static void main(String[] args) {
-
+        ThreeSum sum = new ThreeSum();
+        System.out.println(sum.threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
     }
 }
