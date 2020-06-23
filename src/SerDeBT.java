@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -36,17 +35,5 @@ public class SerDeBT {
         String s = bt.serialize(root);
         System.out.println(s);
         System.out.println(bt.deserialize(s));
-    }
-}
-class Node {
-    Node right, left;
-    int val;
-    Node(int val){
-        this.val = val;
-    }
-
-    @Override
-    public String toString() {
-        return val + " \nleft -> "+ this.left + " \nright -> " + this.right;
     }
 }
