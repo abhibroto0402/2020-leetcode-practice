@@ -46,6 +46,11 @@ public class SerDeBST {
         List<Integer> list = bst.serialize(root);
         System.out.println(list);
         System.out.println(bst.deserialize(list));
+
+        char c = 'c';
+        if(Character.isLowerCase(c)){
+
+        }
     }
 }
 
