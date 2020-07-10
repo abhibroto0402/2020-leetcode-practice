@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class Rotatated {
+public class Rotated {
     public int rotatedDigits(int N) {
         int count=0;
         int [] arr = new int[]{0, 1, 8, 2, 5, 6, 9};
@@ -32,10 +32,7 @@ public class Rotatated {
     }
 
     public static void main(String[] args) {
-        Rotatated rotatated = new Rotatated();
-        System.out.println(rotatated.rotatedDigits(10));
-
-        String s = "test.email+alex@leetcode.com";
-        System.out.println(s.replace(".",""));
+        Rotated rotated = new Rotated();
+        System.out.println(rotated.rotatedDigits(10));
     }
 }
