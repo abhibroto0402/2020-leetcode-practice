@@ -39,7 +39,7 @@ public class GoogleInterveiwSoln {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("root: "+ root.name + " left: "+ root.left.name + " right: "+ root.right.name);
+        sb.append("root: ").append(root.name).append(" left: ").append(root.left.name).append(" right: ").append(root.right.name);
         return sb.toString();
     }
 
