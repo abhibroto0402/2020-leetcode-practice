@@ -71,5 +71,7 @@ public class Trie {
         System.out.println(trie.startsWith("cap")); //true
         System.out.println(trie.search("book"));//false
 
+        int i2=0, i3=0, i5=0;
+
     }
 }

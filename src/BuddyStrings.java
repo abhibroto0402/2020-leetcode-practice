@@ -1,4 +1,4 @@
-public class BuddyStrings {
+public class  BuddyStrings {
     public boolean buddyStrings(String A, String B) {
         if (A.length() != B.length()) return false;
         if (A.equals(B)) {
