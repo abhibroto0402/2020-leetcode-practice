@@ -61,38 +61,20 @@ public class Anagrams {
         return true;
     }
 
-
     public static void main(String[] args) {
-//        Anagrams anagrams = new Anagrams();
-//        int[] a = new int[26];
-//        int[] b = new int[26];
-//
-//        System.out.println(anagrams.checkAnagram("abab", "baba"));
-//
-//
-//        int [] heights = {4,1,1,2,5};
-//        int[] original = new int[heights.length];
-//        System.arraycopy(heights, 0, original, 0, heights.length);
-//        Arrays.sort(heights);
-//        System.out.println(heights[0]);
-//        System.out.println(original[0]);
-//        int count = 0;
-//        for (int i = 0; i < heights.length; i++) {
-//            if (original[i] != heights[i])
-//                count++;
-//        }
-//        System.out.println(count);
-        String s = "something";
-        Map<Character, Integer> result = new HashMap<>();
-        for(char c: s.toCharArray()){
-            if(result.containsKey(c)){
-                result.put(c, result.get(c)+1);
-            }
-            else
-                result.put(c,1);
+        Anagrams anagrams = new Anagrams();
+        System.out.println(anagrams.checkAnagram("abab", "baba"));
+        int [] heights = {4,1,1,2,5};
+        int[] original = new int[heights.length];
+        System.arraycopy(heights, 0, original, 0, heights.length);
+        Arrays.sort(heights);
+        System.out.println(heights[0]);
+        System.out.println(original[0]);
+        int count = 0;
+        for (int i = 0; i < heights.length; i++) {
+            if (original[i] != heights[i])
+                count++;
         }
-        System.out.println(result.size());
-
-
+        System.out.println(count);
     }
 }
