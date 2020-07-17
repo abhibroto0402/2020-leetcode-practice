@@ -37,7 +37,7 @@ public class MaximumSumContiguousSubarray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, -2, -3, 4, 0, 1, -5, 11};
+        int[] arr = {-1, -2};
         MaximumSumContiguousSubarray contiguousSubarray = new MaximumSumContiguousSubarray();
         int max = contiguousSubarray.getMaxSum(arr);
         System.out.println(max);
