@@ -37,7 +37,6 @@ public class DeepCopy {
             iter2.next= iter2.next!=null? iter2.next.next:null;
             iter2=iter2.next;
         }
-
         return head2;
     }
 }
