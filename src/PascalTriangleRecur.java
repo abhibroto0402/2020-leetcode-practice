@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PascalTriangleRecur {
@@ -30,8 +31,24 @@ public class PascalTriangleRecur {
         createPascalTriangleUpto(pascal, ++startIndex, endIndex);
     }
 
+    public List<Integer> getRowRe(int rowIndex) {
+        if(rowIndex==0)
+            return new ArrayList<>(Arrays.asList(1));
+        if(rowIndex==1)
+            return new ArrayList<>(Arrays.asList(1,1));
+        List<Integer> list = new ArrayList<>(rowIndex+1);
+        list.add(1);
+        List<Integer> temp = getRowRe(rowIndex-1);
+        for(int i=1; i<rowIndex; ++i){
+            list.add(temp.get(i-1)+ temp.get(i));
+        }
+        list.add(1);
+        return list;
+
+    }
+
     public static void main(String[] args) {
         PascalTriangleRecur pascalTriangleRecur = new PascalTriangleRecur();
-        System.out.println(pascalTriangleRecur.getRow(4));
+        System.out.println(pascalTriangleRecur.getRowRe(4));
     }
 }

@@ -31,7 +31,8 @@ public class Trie {
         if (root == null) return false;
         TrieNode temp = root;
         for (int i = 0; i < word.length(); i++) {
-            if (!temp.children.containsKey(word.charAt(i))) return false;
+            if (!temp.children.containsKey(word.charAt(i)))
+                return false;
             temp = temp.children.get(word.charAt(i));
         }
         return temp.isEnd;
@@ -58,6 +59,10 @@ public class Trie {
 
     public static void main(String[] args) {
         Trie trie = new Trie();
+
+
+
+
         System.out.println(trie.insert("cap"));
         System.out.println(trie.insert("car"));
         System.out.println(trie.insert("pen"));
@@ -70,8 +75,6 @@ public class Trie {
         System.out.println(trie.startsWith("a"));//true
         System.out.println(trie.startsWith("cap")); //true
         System.out.println(trie.search("book"));//false
-
-        int i2=0, i3=0, i5=0;
 
     }
 }

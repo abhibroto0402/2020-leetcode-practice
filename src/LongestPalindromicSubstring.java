@@ -1,5 +1,3 @@
-package tree.graph;
-
 public class LongestPalindromicSubstring {
     private int findLongestPalindromicSubstring(String str) {
         int n = str.length();

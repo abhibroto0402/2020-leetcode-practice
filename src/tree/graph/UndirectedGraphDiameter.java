@@ -9,7 +9,7 @@ public class UndirectedGraphDiameter {
         if (edges == null || edges.length == 0) return 0;
         diameter = 0;
 
-        ArrayList<Integer>[] graph = new ArrayList[edges.length+1];
+        ArrayList[] graph = new ArrayList[edges.length+1];
         boolean[] visited = new boolean[edges.length+1];
 
         for (int i = 0; i < graph.length; i++) {

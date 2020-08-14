@@ -28,4 +28,30 @@ public class NumberOfNodesCompleteTree {
 
         return countNodes(root.left) + countNodes(root.right) + 1;
     }
+
+    public static void main(String[] args) {
+        int [] a = {1,2,6,7,9};
+        int k=3;
+        int ans=0;
+        int n = a.length;
+        if(a[n-1]== n)
+            ans= n+k;
+        if(a[0]!=1 && k<a[0])
+            ans= k;
+        int left = 0;
+        int right = n-1;
+        while(left<right){
+            int mid = left + (right-left)/2;
+            int missingCount=0;
+            if(a[mid]!= mid+1){
+                missingCount = a[mid]-(mid+1);
+            }
+            if(missingCount>k){
+                right=mid;
+            }else
+                left=mid+1;
+        }
+        ans= left-1<0? a[left]+k:a[left-1]+k;
+        System.out.println(ans);
+    }
 }
