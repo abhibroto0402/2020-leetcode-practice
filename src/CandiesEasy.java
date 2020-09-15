@@ -51,5 +51,7 @@ public class CandiesEasy {
         CandiesEasy easy = new CandiesEasy();
         System.out.println(Arrays.toString(easy.distributeCandies(10, 3)));
         System.out.println(easy.lemonadeChange(new int[] {5,5,5,10,20}));
+
+        System.out.println(Integer.parseInt("06"));
     }
 }

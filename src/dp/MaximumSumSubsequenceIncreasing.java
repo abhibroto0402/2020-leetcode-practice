@@ -7,8 +7,8 @@ package dp;
  */
 public class MaximumSumSubsequenceIncreasing {
 
-    public int maxSum(int arr[]){
-        int T[] = new int[arr.length];
+    public int maxSum(int[] arr){
+        int[] T = new int[arr.length];
 
         for (int i = 0; i < T.length; i++) {
             T[i] = arr[i];
@@ -31,9 +31,9 @@ public class MaximumSumSubsequenceIncreasing {
         return max;
     }
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         MaximumSumSubsequenceIncreasing mss = new MaximumSumSubsequenceIncreasing();
-        int arr[] = {1, 101, 10, 2, 3, 100,4};
+        int[] arr = {1, 101, 10, 2, 3, 100,4};
         int r = mss.maxSum(arr);
         System.out.print(r);
     }

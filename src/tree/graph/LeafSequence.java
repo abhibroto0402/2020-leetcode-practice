@@ -25,7 +25,6 @@ public class LeafSequence {
         if(root.left==null && root.right==null){
             leafNodes.add(root.val);
             setNodes.add(root.val);
-
         }
         queueLeafNodes(root.left);
         queueLeafNodes(root.right);

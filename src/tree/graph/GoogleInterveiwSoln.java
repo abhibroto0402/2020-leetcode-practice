@@ -8,8 +8,8 @@ public class GoogleInterveiwSoln {
     }
 
     class CityNode {
-        private String name;
-        private int population;
+        private final String name;
+        private final int population;
         CityNode left, right;
 
         public CityNode(String name, int val){

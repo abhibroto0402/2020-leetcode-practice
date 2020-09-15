@@ -4,7 +4,7 @@ public class FileName {
     public String[] getFolderNames(String[] names) {
         HashMap<String, Integer> map = new HashMap<>();
 
-        String res[] = new String[names.length];
+        String[] res = new String[names.length];
 
         for (int i = 0; i < names.length; i++) {
             if (map.containsKey(names[i])) {

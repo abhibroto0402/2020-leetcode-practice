@@ -1,9 +1,9 @@
 package dp.backtracking;
 
 public class HamiltonianCycle {
-    private int numOfVertexes;
-    private int[] hamiltonianPath;
-    private int[][] adj;
+    private final int numOfVertexes;
+    private final int[] hamiltonianPath;
+    private final int[][] adj;
 
     HamiltonianCycle(int [] [] adj){
         this.adj=adj;

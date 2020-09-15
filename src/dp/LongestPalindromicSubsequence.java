@@ -1,3 +1,5 @@
+package dp;
+
 public class LongestPalindromicSubsequence {
     public int longestPalindromeSubseq(String s) {
         return longestCommonSubseqence(s, new StringBuilder(s).reverse().toString());

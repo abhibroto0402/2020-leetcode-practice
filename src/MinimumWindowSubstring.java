@@ -1,56 +1,75 @@
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
-        int length = s.length();
-        if(t.length()> length) return "";
-        if(t.length()==1 && s.contains(t)) return t;
-        List<Pair<Integer, Character>> filter = new ArrayList<>();
-        Set<Character> visited = new HashSet<>();
-        Set<Character> t_set = new HashSet<>();
-        for (char c: t.toCharArray()){
-            t_set.add(c);
-        }
-        for(int i=0; i<length; ++i){
-            if(t_set.contains(s.charAt(i))){
-                filter.add(new Pair<>(i, s.charAt(i)));
-            }
-        }
-        int min=Integer.MAX_VALUE;
-        String res="";
-        if(filter.size()==0) return res;
-        for(int i=0; i<filter.size()-1;++i){
-            Pair<Integer, Character> p = filter.get(i);
-            visited.add(p.getValue());
-            int startIndex= p.getKey();
-            int endIndex=0;
-            for(int j=i+1; j<filter.size();++j){
-                visited.add(filter.get(j).getValue());
-                if(visited.equals(t_set)) {
-                    endIndex = filter.get(j).getKey();
-                    break;
-                }
-            }
-            String candidate = s.substring(startIndex, endIndex+1);
-            if(candidate.length()<min){
-                res = candidate;
-                min=candidate.length();
-            }
-            if(endIndex+1>=s.length()) break;
-            visited= new HashSet<>();
+        if (s.length() == 0 || t.length() == 0) {
+            return "";
         }
 
-        return res;
+        Map<Character, Integer> dictT = new HashMap<>();
+
+        for (int i = 0; i < t.length(); i++) {
+            int count = dictT.getOrDefault(t.charAt(i), 0);
+            dictT.put(t.charAt(i), count + 1);
+        }
+
+        int required = dictT.size();
+
+        // Filter all the characters from s into a new list along with their index.
+        // The filtering criteria is that the character should be present in t.
+        List<Pair<Integer, Character>> filteredS = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (dictT.containsKey(c)) {
+                filteredS.add(new Pair<>(i, c));
+            }
+        }
+
+        int l = 0, r = 0, formed = 0;
+        Map<Character, Integer> windowCounts = new HashMap<>();
+        int[] ans = {-1, 0, 0};
+
+        // Look for the characters only in the filtered list instead of entire s.
+        // This helps to reduce our search.
+        // Hence, we follow the sliding window approach on as small list.
+        while (r < filteredS.size()) {
+            char c = filteredS.get(r).getValue();
+            int count = windowCounts.getOrDefault(c, 0);
+            windowCounts.put(c, count + 1);
+
+            if (dictT.containsKey(c) && windowCounts.get(c).intValue() == dictT.get(c).intValue()) {
+                formed++;
+            }
+
+            // Try and contract the window till the point where it ceases to be 'desirable'.
+            while (l <= r && formed == required) {
+                c = filteredS.get(l).getValue();
+
+                // Save the smallest window until now.
+                int end = filteredS.get(r).getKey();
+                int start = filteredS.get(l).getKey();
+                if (ans[0] == -1 || end - start + 1 < ans[0]) {
+                    ans[0] = end - start + 1;
+                    ans[1] = start;
+                    ans[2] = end;
+                }
+
+                windowCounts.put(c, windowCounts.get(c) - 1);
+                if (dictT.containsKey(c) && windowCounts.get(c) < dictT.get(c)) {
+                    formed--;
+                }
+                l++;
+            }
+            r++;
+        }
+        return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
     }
 
 
     public static void main(String[] args) {
         MinimumWindowSubstring windowSubstring = new MinimumWindowSubstring();
-        System.out.println(windowSubstring.minWindow("ab", "a"));
+        System.out.println(windowSubstring.minWindow("donutsandwafflemakemehungry", "flea"));
     }
 }

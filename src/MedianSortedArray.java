@@ -24,7 +24,7 @@ public class MedianSortedArray {
                     ans = (double) Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY);
                     ans = ans / 2;
                 } else
-                    ans = (double) Math.max(maxLeftX, maxLeftY);
+                    ans = Math.max(maxLeftX, maxLeftY);
                 break;
 
             } else if (maxLeftX > minRightY) {
